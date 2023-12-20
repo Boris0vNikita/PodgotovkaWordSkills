@@ -1,0 +1,48 @@
+﻿<Page x:Class="TestWSRus.Pages.AddOrderPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TestWSRus.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddOrderPage">
+
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="Товар:" Margin="0,0,10,0"/>
+                <ComboBox Name="cmbProduct" DisplayMemberPath="NameProduct" Width="200" Margin="0,0,10,0"/>
+                <Button Name="btnAdd" Content="Добавить" MinHeight="30" MinWidth="100" Margin="0,0,10,0" Click="btnAdd_Click"/>
+                <Button Name="btnDelete" Content="Убрать" MinHeight="30" MinWidth="100" Margin="0,0,10,0" Click="btnDelete_Click"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                <Button Name="btnCalculated" Content="Высчитать стоимость заказа" MinHeight="30" MinWidth="100" Margin="0,0,10,0" Click="btnCalculated_Click"/>
+                <TextBox Name="txbResult" Width="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <DataGrid AutoGenerateColumns="False" IsReadOnly="True" Name="dgrdOrder" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Наименование товара" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}"/>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Name="bntPlus" Content="+" Click="bntPlus_Click" />
+                                        <Button Name="bntMinus" Content="-" Click="bntMinus_Click" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                <Button Name="bntCreateOrder" Content="Сформировать заказ" Click="bntCreateOrder_Click" Margin="0,0,30,0" MinHeight="30" MinWidth="100" />
+                <Button Name="bntCancel" Content="Назад" Click="bntCancel_Click" MinHeight="30" MinWidth="100" />
+                <Label Name="lblEror"/>
+            </StackPanel>
+        </StackPanel>              
+    </Grid>
+</Page>
